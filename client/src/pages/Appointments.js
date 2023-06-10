@@ -28,8 +28,10 @@ const Appointments = () => {
   }, []);
 
   const columns = [
+    //insted of id we want to show the name of the patient
+
     {
-      title: "ID",
+      title: "Name",
       dataIndex: "_id",
     },
     {

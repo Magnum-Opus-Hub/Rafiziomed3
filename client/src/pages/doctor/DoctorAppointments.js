@@ -51,7 +51,7 @@ const DoctorAppointments = () => {
 
   const columns = [
     {
-      title: "ID",
+      title: "Name",
       dataIndex: "_id",
     },
     {
