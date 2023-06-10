@@ -2,7 +2,16 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema(
+  //right now we only get a doctor ID and User ID but we want to get the user name and the doctor name as well
   {
+    userName : {
+      type: String,
+      required: true,
+    },
+    doctorName : {
+      type: String,
+      required: true,
+    },
     userId: {
       type: String,
       required: true,
@@ -39,6 +48,8 @@ const appointmentSchema = new mongoose.Schema(
 
 // Define a Joi schema for appointment validation
 const appointmentJoiSchema = Joi.object({
+  userName: Joi.string().required(),
+  doctorName: Joi.string().required(),
   userId: Joi.string().required(),
   doctorId: Joi.string().required(),
   doctorInfo: Joi.string().required(),

@@ -178,12 +178,13 @@ const getAllDocotrsController = async (req, res) => {
   }
 };
 
-// Checking Availability 
+// Checking Availability
 const bookingAvailabilityController = async (req, res) => {
   try {
     const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
     const startTime = moment(req.body.time, "HH:mm").toISOString();
     const doctorId = req.body.doctorId;
+    const doctorName = req.body.doctorName;
     const doctor = await doctorModel.findById(doctorId);
     if (!doctor) {
       return res.status(404).send({
@@ -202,6 +203,7 @@ const bookingAvailabilityController = async (req, res) => {
     const appointments = await appointmentModel.find({
       doctorId,
       date,
+      doctorName,
       time: startTime,
     });
     if (appointments.length > 0) {
